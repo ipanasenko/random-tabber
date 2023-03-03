@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PATHS = require('./paths');
 
-// used in the module rules and in the stats exlude list
+// used in the module rules and in the stats exclude list
 const IMAGE_TYPES = /\.(png|jpe?g|gif|svg)$/i;
 
 // To re-use webpack configuration across templates,
@@ -28,6 +28,10 @@ const common = {
   },
   module: {
     rules: [
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+      },
       // Help webpack in understanding CSS files imported in .js files
       {
         test: /\.css$/,

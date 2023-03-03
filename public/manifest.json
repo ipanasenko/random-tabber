@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Random Tabber",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Jump to a random Chrome/Edge tab",
   "icons": {
     "16": "icons/icon-16.png",
@@ -13,6 +13,10 @@
   },
   "action": {
     "default_title": "Random Tabber"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
   },
   "permissions": ["storage"]
 }
