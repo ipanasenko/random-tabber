@@ -9,7 +9,7 @@ Jump to a random Chrome/Edge tab
 
 ## Installation
 
-[Chrome/Edge extension](https://example.com)
+[Chrome/Edge extension](https://chrome.google.com/webstore/detail/random-tabber/amopeaoilciklhbcjmbdgajcgpgkokgi)
 
 ---
 
