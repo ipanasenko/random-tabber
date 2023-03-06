@@ -5,7 +5,7 @@ interface Settings {
 
 const defaultSettings: Settings = {
   'switch-in': 'current',
-  'close-current': true,
+  'close-current': false,
 };
 
 export const getSettings = async (): Promise<Settings> =>
