@@ -1,15 +1,4 @@
-interface Settings {
-  'switch-in': 'current' | 'all';
-  'close-current': boolean;
-}
-
-const defaultSettings: Settings = {
-  'switch-in': 'current',
-  'close-current': false,
-};
-
-export const getSettings = async (): Promise<Settings> =>
-  (await chrome.storage.sync.get(defaultSettings)) as Settings;
+import { getSettings } from './common';
 
 async function saveOptions() {
   (document.getElementById('save') as HTMLButtonElement).innerText =
@@ -36,6 +25,9 @@ async function restoreOptions() {
     settings['switch-in'];
   (document.getElementById('close-current') as HTMLInputElement).checked =
     settings['close-current'];
+
+  (document.getElementById('loaded') as HTMLDivElement).style.display = 'block';
+  (document.getElementById('loading') as HTMLDivElement).style.display = 'none';
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);

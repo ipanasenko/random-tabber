@@ -1,9 +1,14 @@
-import { getSettings } from './options';
+import { getSettings } from './common';
 
 chrome.action.onClicked.addListener(async ({ windowId, id }) => {
   const settings = await getSettings();
 
-  const allTabs = await chrome.tabs.query({ windowId });
+  const shouldCloseCurrentTab = settings['close-current'];
+  const shouldSearchInCurrentWindowOnly = settings['switch-in'] === 'current';
+
+  const allTabs = await chrome.tabs.query({
+    windowId: shouldSearchInCurrentWindowOnly ? windowId : undefined,
+  });
   const allOtherTabs = allTabs.filter((tab) => tab.id !== id);
   const randomTab =
     allOtherTabs[Math.floor(Math.random() * allOtherTabs.length)];
@@ -13,7 +18,11 @@ chrome.action.onClicked.addListener(async ({ windowId, id }) => {
     tabs: randomTab.index,
   });
 
-  if (settings['close-current']) {
+  if (!shouldSearchInCurrentWindowOnly) {
+    await chrome.windows.update(randomTab.windowId, { focused: true });
+  }
+
+  if (shouldCloseCurrentTab) {
     await chrome.tabs.remove(id);
   }
 });
