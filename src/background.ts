@@ -1,15 +1,4 @@
-interface Settings {
-  'switch-in': 'current' | 'all';
-  'close-current': boolean;
-}
-
-const defaultSettings: Settings = {
-  'switch-in': 'current',
-  'close-current': true,
-};
-
-export const getSettings = async (): Promise<Settings> =>
-  (await chrome.storage.sync.get(defaultSettings)) as Settings;
+import { getSettings } from './options';
 
 chrome.action.onClicked.addListener(async ({ windowId, id }) => {
   const settings = await getSettings();
