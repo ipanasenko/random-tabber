@@ -14,9 +14,25 @@
   "action": {
     "default_title": "Random Tabber"
   },
+  "commands": {
+    "move-tab-to-prev-group": {
+      "description": "Move selected tabs to the previous tab group",
+      "suggested_key": {
+        "default": "Ctrl+Shift+Comma",
+        "mac": "MacCtrl+Command+Comma"
+      }
+    },
+    "move-tab-to-next-group": {
+      "description": "Move selected tabs to the next tab group",
+      "suggested_key": {
+        "default": "Ctrl+Shift+Period",
+        "mac": "MacCtrl+Command+Period"
+      }
+    }
+  },
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
   },
-  "permissions": ["storage"]
+  "permissions": ["storage", "tabGroups"]
 }
